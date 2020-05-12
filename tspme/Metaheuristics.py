@@ -1,5 +1,7 @@
 import numpy as np
+import random
 from sklearn.metrics.pairwise import euclidean_distances
+from tspme.utils.CustomerProperties import LazyProperty
 
 
 class SimulatedAnnealing:
@@ -19,9 +21,14 @@ class SimulatedAnnealing:
         self.cost_matrix = euclidean_distances(self.locations_generator["locations"])
         return self.cost_matrix
 
-    @property
-    def tour_len(self):
-        return np.sum(self.cost_matrix)
+    @LazyProperty
+    def size(self):
+        return len(self.locations_generator["x"])
+
+    def tour_len(self, tour):
+        return np.sum(self.cost_matrix[tour[i]][tour[i+1]] for i in range(self.size-1))
+
+
 
 
 
