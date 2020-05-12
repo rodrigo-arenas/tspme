@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.metrics.pairwise import euclidean_distances
 
 
@@ -17,6 +18,12 @@ class SimulatedAnnealing:
         self.locations_generator = locations_generator
         self.cost_matrix = euclidean_distances(self.locations_generator["locations"])
         return self.cost_matrix
+
+    @property
+    def tour_len(self):
+        return np.sum(self.cost_matrix)
+
+
 
 
 
