@@ -13,9 +13,13 @@ class RandomRouteGenerator:
         self.y_max = y_max
         self.routes = None
 
+    def __repr__(self):
+        return f'<Random Route Generator with {self.size} cities>'
+
     def generate(self):
         self.routes = dict({"x": np.random.randint(low=self.x_min, high=self.x_max, size=self.size),
                             "y": np.random.randint(low=self.x_min, high=self.x_max, size=self.size)})
+        self.routes["locations"] = [[self.routes["x"][i], self.routes["y"][i]] for i in range(self.size)]
         return self.routes
 
 
