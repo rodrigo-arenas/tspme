@@ -1,21 +1,18 @@
 import numpy as np
 import random
-import functools
-import operator
 from sklearn.metrics.pairwise import euclidean_distances
 from tspme.utils.CustomerProperties import LazyProperty
+from tspme.utils.PlotRoutes import plot_routes
 
 
 class SimulatedAnnealing:
 
-    def __init__(self, init_temp=0.05, alpha=0.995, stop_temp=0.5, n_cycles=50):
-        self.init_temp = init_temp
+    def __init__(self, init_temp_factor=1, alpha=0.995, stop_temp=0.5, n_cycles=50):
+        self.init_temp = init_temp_factor
         self.alpha = alpha
         self.stop_temp = stop_temp
         self.n_cycles = n_cycles
         self.steps = None
-        self.x = None
-        self.y = None
         self.cost_matrix = None
         self.locations_generator = None
         self.solutions_size = None
@@ -40,10 +37,13 @@ class SimulatedAnnealing:
         crossover_points = random.sample(range(self.size), 2)
         _init_pos, _end_pos = min(crossover_points), max(crossover_points)
         new_route = [new_route[:_init_pos], new_route[_init_pos:_end_pos][::-1], new_route[_end_pos:]]
-        return np.hstack(new_route).astype(int)
+        new_route = np.hstack(new_route).astype(int)
+        new_route[self.size] = new_route[0]
+        return new_route
 
     def fit(self, return_cost_hist=False):
         current_solution = random.sample(range(self.size), self.size)
+        current_solution.append(current_solution[0])
         current_len = self.tour_len(current_solution)
         t = 0.05 * self.tour_len(current_solution)
         self.n_cycles * int(np.log(self.init_temp / t) / np.log(self.alpha) + 1)
@@ -64,7 +64,7 @@ class SimulatedAnnealing:
                 self.cost_hist.append(current_len)
             t *= self.alpha
         self.solution = current_solution
-        self.callback = {"solution": self.solution,
+        self.callback = {"route": self.solution,
                          "cost": current_len,
                          "n_iterations": n_iterations}
         if return_cost_hist:
