@@ -6,7 +6,7 @@ Python metaheuristics for Traveling Salesman Problem (TSP)
 ```python
 import matplotlib.pyplot as plt
 from tspme.utils.routes_generator import RandomRouteGenerator
-from tspme.utils.plot_routes import plot_routes
+from tspme.utils.plot_routes import plot_routes, plot_history
 from tspme.metaheuristics import SimulatedAnnealing
 
 
@@ -16,11 +16,11 @@ routes = route_generator.generate()
 
 sa = SimulatedAnnealing()
 sa.set_distance_matrix(routes)
-solution = sa.fit(return_cost_hist=False)
+solution = sa.fit(return_cost_hist=True)
 print(solution)
 plot_routes(cities=routes, solution=solution)
+plot_history(solution=solution)
 plt.show()
-
 ```
 
 <img src="https://i.ibb.co/RgTPMLV/50-cities-solution.png" width="400"/>  <img src="https://i.ibb.co/KNSdrS8/100-cities-cost.png" width="400"/>
