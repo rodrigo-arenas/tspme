@@ -29,17 +29,18 @@ class SimulatedAnnealing:
         return len(self.locations_generator["x"])
 
     def tour_len(self, tour):
-        return np.sum(self.cost_matrix[tour[i]][tour[i + 1]] for i in range(self.size - 1))
+        return np.sum(self.cost_matrix[np.roll(tour, 1), tour])
 
     def opt2(self, route):
         new_route = route.copy()
-        crossover_points = random.sample(range(self.size), 2)
+        crossover_points = np.random.choice(range(self.size), size=2, replace=False)
         _init_pos, _end_pos = min(crossover_points), max(crossover_points)
         new_route = [new_route[:_init_pos], new_route[_init_pos:_end_pos][::-1], new_route[_end_pos:]]
         new_route = np.hstack(new_route).astype(int)
         new_route[self.size] = new_route[0]
         return new_route
 
+    #TODO: Change random.sample for np.random.choice
     def fit(self, return_cost_hist=False):
         current_solution = random.sample(range(self.size), self.size)
         current_solution.append(current_solution[0])
