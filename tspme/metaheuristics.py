@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from sklearn.metrics.pairwise import euclidean_distances
-from tspme.utils.CustomerProperties import LazyProperty
+from tspme.utils.customer_properties import LazyProperty
 
 
 class SimulatedAnnealing:

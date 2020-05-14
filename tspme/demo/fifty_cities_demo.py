@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from tspme.utils.RoutesGenerator import RandomRouteGenerator
-from tspme.utils.PlotRoutes import plot_routes
-from tspme.Metaheuristics import SimulatedAnnealing
+from tspme.utils.routes_generator import RandomRouteGenerator
+from tspme.utils.plot_routes import plot_routes
+from tspme.metaheuristics import SimulatedAnnealing
 
 
 SIZE = 50
