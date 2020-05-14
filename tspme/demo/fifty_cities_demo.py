@@ -4,7 +4,7 @@ from tspme.utils.plot_routes import plot_routes, plot_history
 from tspme.metaheuristics import SimulatedAnnealing
 
 
-SIZE = 100
+SIZE = 50
 route_generator = RandomRouteGenerator(size=SIZE)
 routes = route_generator.generate()
 
