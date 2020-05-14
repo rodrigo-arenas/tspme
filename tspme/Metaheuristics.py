@@ -19,7 +19,7 @@ class SimulatedAnnealing:
         self.solution = None
         self.callback = None
 
-    def distance_matrix(self, locations_generator):
+    def set_distance_matrix(self, locations_generator):
         self.locations_generator = locations_generator
         self.cost_matrix = euclidean_distances(self.locations_generator["locations"])
         return self.cost_matrix
