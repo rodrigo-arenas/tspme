@@ -16,3 +16,14 @@ def plot_routes(cities: dict = None, solution: dict = None, figsize=(8, 6), **kw
     plt.title('Final Solution Route')
     return fig
 
+
+def plot_history(solution: dict = None, figsize=(8, 6)):
+    fig = plt.figure(figsize=figsize)
+    hist = solution['cost_hist']
+    plt.plot(hist, '-', c='black', alpha=0.5)
+    plt.xlabel('Iteration')
+    plt.ylabel('Cost')
+    plt.title('Cost evolution')
+    return fig
+
+
