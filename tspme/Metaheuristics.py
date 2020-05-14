@@ -47,7 +47,6 @@ class SimulatedAnnealing:
         current_len = self.tour_len(current_solution)
         t = 0.05 * self.tour_len(current_solution)
         self.n_cycles * int(np.log(self.init_temp / t) / np.log(self.alpha) + 1)
-        n_iterations = self.solutions_size = int(np.log(self.init_temp / t) / np.log(self.alpha) + 2)
         self.cost_hist = [self.tour_len(current_solution)]
 
         k = 0
@@ -65,8 +64,7 @@ class SimulatedAnnealing:
             t *= self.alpha
         self.solution = current_solution
         self.callback = {"route": self.solution,
-                         "cost": current_len,
-                         "n_iterations": n_iterations}
+                         "cost": current_len}
         if return_cost_hist:
             self.callback["cost_hist"] = self.cost_hist
 
