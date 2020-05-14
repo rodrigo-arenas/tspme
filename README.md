@@ -23,6 +23,6 @@ plt.show()
 
 ```
 
-[](https://raw.githubusercontent.com/rodrigoarenas456/tspme/master/docs/100_cities_solution.png)
-[](https://raw.githubusercontent.com/rodrigoarenas456/tspme/master/docs/100_cities_cost.png)
+![](https://i.ibb.co/RgTPMLV/50-cities-solution.png)
+![](https://i.ibb.co/KNSdrS8/100-cities-cost.png)
 
