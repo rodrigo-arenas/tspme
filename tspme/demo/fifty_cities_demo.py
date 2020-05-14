@@ -9,7 +9,7 @@ route_generator = RandomRouteGenerator(size=SIZE)
 routes = route_generator.generate()
 
 sa = SimulatedAnnealing()
-sa.distance_matrix(routes)
+sa.set_distance_matrix(routes)
 solution = sa.fit(return_cost_hist=False)
 print(solution)
 plot_routes(cities=routes, solution=solution)
