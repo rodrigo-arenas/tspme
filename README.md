@@ -23,6 +23,6 @@ plt.show()
 
 ```
 
-![](https://i.ibb.co/RgTPMLV/50-cities-solution.png)
-![](https://i.ibb.co/KNSdrS8/100-cities-cost.png)
+<img src="https://i.ibb.co/RgTPMLV/50-cities-solution.png" width="408">
+<img src="https://i.ibb.co/KNSdrS8/100-cities-cost.png" width="408">
 
